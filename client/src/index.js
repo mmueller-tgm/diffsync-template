@@ -4,7 +4,7 @@ let DiffSyncClient = require('diffsync').Client;
 
 let socket = require('socket.io-client');
 
-let client = new DiffSyncClient(socket('http://localhost:3002'), 'form-data');
+let client = new DiffSyncClient(socket('http://localhost:3001'), 'form-data');
 
 let data;
 client.on('connected', function(){
@@ -41,5 +41,3 @@ client.on('synced', function(){
 });
 
 client.initialize();
-
-

@@ -3,7 +3,7 @@
  */
 
 // setting up socket.io
-let io = require('socket.io')(3002);
+let io = require('socket.io')(3001);
 
 // setting up diffsync's DataAdapter
 let diffsync    = require('diffsync');
@@ -11,5 +11,3 @@ let dataAdapter = new diffsync.InMemoryDataAdapter();
 
 // setting up the diffsync server
 let diffSyncServer = new diffsync.Server(dataAdapter, io);
-
-
