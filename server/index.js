@@ -3,7 +3,7 @@
  */
 
 // setting up socket.io
-let io = require('socket.io')(3000);
+let io = require('socket.io')(3002);
 
 // setting up diffsync's DataAdapter
 let diffsync    = require('diffsync');

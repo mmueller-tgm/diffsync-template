@@ -4,7 +4,7 @@ let DiffSyncClient = require('diffsync').Client;
 
 let socket = require('socket.io-client');
 
-let client = new DiffSyncClient(socket('http://localhost:3000'), 'form-data');
+let client = new DiffSyncClient(socket('http://localhost:3002'), 'form-data');
 
 let data;
 client.on('connected', function(){
@@ -16,10 +16,14 @@ client.on('connected', function(){
 
     // Hier können listener erstellt werden
     // Tipp: document.getElementById('xxx').addEventListener(...)
-
-    // Mit:
-    //   client.sync();
-    // Werden die Daten mit dem Server synchronisiert
+    document.getElementById('submit').addEventListener('click', function () {
+        data['fname'] = document.getElementById('form-firstname').value
+        data['lname'] = document.getElementById('form-lastname').value
+        data['addr'] = document.getElementById('form-address').value
+        data['city'] = document.getElementById('form-city').value
+        data['postal'] = document.getElementById('form-postalcode').value
+        client.sync()
+    })
 
 });
 
@@ -28,6 +32,11 @@ client.on('synced', function(){
     console.log('Neue Daten vom Server!');
     console.log('Synchronisierte Daten akutell:');
     console.log(data);
+    document.getElementById('form-firstname').value = data['fname']
+    document.getElementById('form-lastname').value = data['lname']
+    document.getElementById('form-address').value = data['addr']
+    document.getElementById('form-city').value = data['city']
+    document.getElementById('form-postalcode').value = data['postal']
 
 });
 
